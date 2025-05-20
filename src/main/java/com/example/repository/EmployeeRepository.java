@@ -9,9 +9,11 @@ import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.stereotype.Repository;
 
-import java.util.Date;
 import java.util.List;
 
+/**
+ * employeesテーブルを操作するリポジトリクラス.
+ */
 @Repository
 public class EmployeeRepository {
     @Autowired
@@ -36,8 +38,9 @@ public class EmployeeRepository {
     };
 
     /**
-     * 授業員一覧情報を入社日順(降順)で取得する(従業員が存在しない場合はサイズ0件の従業員一覧を返す)．
-     * @return 全件検索した結果を入社日順に返す
+     * 授業員一覧情報を入社日順(降順)で取得する(従業員が存在しない場合はサイズ0件の従業員一覧を返す).
+     *
+     * @return 従業員一覧情報(入社日の降順)
      */
     public List<Employee> findAll(){
         String sql = "SELECT id, name, image, gender, hireDate, mailAddress, zipCode, " +
@@ -49,8 +52,9 @@ public class EmployeeRepository {
 
     /**
      * 主キーから従業員情報を取得する（従業員情報が存在しない場合はSpringが自動的に例外を発生する）．
-     * @param id
-     * @return
+     *
+     * @param id 従業員ID
+     * @return 検索した従業員情報
      */
     public Employee findById(Integer id){
         String sql = "SELECT id, name, image, gender, hireDate, mailAddress, zipCode, address, " +
@@ -64,7 +68,8 @@ public class EmployeeRepository {
     /**
      * 従業員を変更する(idカラムをのぞいた従業員情報のすべてのカラムを更新できるようなSQLを発行する)．
      * 全行更新されないようにWhere句の指定を考える．
-     * @param employee
+     *
+     * @param employee 変更結果とする従業員の情報
      */
     public void update(Employee employee){
         String sql = "SET employees UPDATE name=:name, image=:image, gender=:gender, hireDate=:hireDate, " +

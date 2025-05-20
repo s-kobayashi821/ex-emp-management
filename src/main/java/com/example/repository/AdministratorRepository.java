@@ -9,8 +9,10 @@ import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
 
+/**
+ * administoratorsテーブルを操作するリポジトリクラス.
+ */
 @Repository
 public class AdministratorRepository {
 
@@ -28,8 +30,9 @@ public class AdministratorRepository {
     };
 
     /**
-     * 管理者情報を挿入する
-     * @param administrator
+     * 管理者情報を挿入する.
+     *
+     * @param administrator 管理者情報
      */
     public void insert(Administrator administrator){
         String sql = "INSERT INTO administrators (id, name, mailAddress, password) VALUES (:id, :name, :mailAddress, :password);";
@@ -39,12 +42,13 @@ public class AdministratorRepository {
 
     /**
      *メールアドレスとパスワードから管理者情報を取得する(1件も存在しない場合はnullを返す).
-     * @param mailAddress
-     * @param password
+     *
+     * @param mailAddress メールアドレス
+     * @param password パスワード
      * @return 取り出した管理者情報を返す
      */
     public Administrator findByMailAddressAndPassword(String mailAddress, String password){
-        String sql = "SELECT (id, name, mailAddress, password) FROM administrators WHERE mailAddress=:mailAddress AND password=:password);";
+        String sql = "SELECT id, name, mailAddress, password FROM administrators WHERE mailAddress=:mailAddress AND password=:password);";
         SqlParameterSource param = new MapSqlParameterSource().addValue("mailAddress", mailAddress).addValue("password", password);
 
 
