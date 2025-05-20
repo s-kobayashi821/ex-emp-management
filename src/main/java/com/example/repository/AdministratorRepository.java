@@ -51,13 +51,10 @@ public class AdministratorRepository {
         String sql = "SELECT id, name, mail_address, password FROM administrators WHERE mail_address=:mailAddress AND password=:password;";
         SqlParameterSource param = new MapSqlParameterSource().addValue("mailAddress", mailAddress).addValue("password", password);
 
-
         //1件もヒットしなかったらnullを返すようにする例外処理
-        Administrator administrator;
         try{
             return template.queryForObject(sql, param, ADMINISTRATOR_LOW_MAPPER);
         }catch (Exception e){
-            System.err.println("1件もヒットしなかった");
             return  null;
         }
     }

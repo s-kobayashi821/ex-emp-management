@@ -48,7 +48,7 @@ public class AdministratorController {
     }
 
     /**
-     * 管理者情報を登録する．
+     * 管理者情報を登録する.
      *
      * @param form　管理者情報の入力フォーム
      * @return ログイン画面にリダイレクトする
@@ -64,7 +64,7 @@ public class AdministratorController {
 
 
     /**
-     *ログイン処理を行い，成功したら従業員一覧情報ページにリダイレクトする．
+     * ログイン処理を行い，成功したら従業員一覧情報ページにリダイレクトする.
      *
      * @param form ログインフォーム
      * @param model エラーメッセージのためのリクエストスコープ
@@ -73,11 +73,6 @@ public class AdministratorController {
     @PostMapping("/login")
     public String login(LoginForm form, Model model){
         Administrator administrator = administratorService.login(form.getMailAddress(), form.getPassword());
-
-        System.out.println("mail:" + form.getMailAddress());
-        System.out.println("pass: " + form.getPassword());
-
-        System.out.println(administrator);
 
         //ログインが失敗したときの処理
         if(administrator == null){
