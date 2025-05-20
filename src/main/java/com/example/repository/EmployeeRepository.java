@@ -71,6 +71,8 @@ public class EmployeeRepository {
                 "mailAddress=:mailAddress, zipCode=:zipCode, address=:address, " +
                 "telephone=:telephone, salary=:salary, characteristics=:characteristics, dependentsCount=:dependentsCount) " +
                 "WHERE id=:id;";
+        SqlParameterSource param = new BeanPropertySqlParameterSource(employee);
+        template.update(sql, param);
     }
 
 
