@@ -3,7 +3,7 @@ package com.example.form;
 /**
  * 管理者登録時に使用するためのフォーム.
  */
-public class InsertAdministatorForm {
+public class InsertAdministratorForm {
     /**名前*/
     private String name;
 
@@ -15,7 +15,7 @@ public class InsertAdministatorForm {
 
     @Override
     public String toString() {
-        return "InsertAdministatorForm{" +
+        return "InsertAdministratorForm{" +
                 "name='" + name + '\'' +
                 ", mailAddress='" + mailAddress + '\'' +
                 ", password='" + password + '\'' +
