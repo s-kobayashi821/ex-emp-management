@@ -72,9 +72,9 @@ public class EmployeeRepository {
      * @param employee 変更結果とする従業員の情報
      */
     public void update(Employee employee){
-        String sql = "SET employees UPDATE name=:name, image=:image, gender=:gender, hire_date=:hireDate, " +
+        String sql = "UPDATE employees SET name=:name, image=:image, gender=:gender, hire_date=:hireDate, " +
                 "mail_address=:mailAddress, zip_code=:zipCode, address=:address, " +
-                "telephone=:telephone, salary=:salary, characteristics=:characteristics, dependents_count=:dependentsCount) " +
+                "telephone=:telephone, salary=:salary, characteristics=:characteristics, dependents_count=:dependentsCount " +
                 "WHERE id=:id;";
         SqlParameterSource param = new BeanPropertySqlParameterSource(employee);
         template.update(sql, param);

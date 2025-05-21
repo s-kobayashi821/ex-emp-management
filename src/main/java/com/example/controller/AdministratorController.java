@@ -84,4 +84,16 @@ public class AdministratorController {
         session.setAttribute("administratorName", administrator.getName());
         return "redirect:/employee/showList";
     }
+
+    /**
+     * ログアウト処理を行い，最初のログイン画面にフォワードする.
+     *
+     * @param form ログイン画面の入力フォーム
+     * @return ログイン画面にフォワードする
+     */
+    @GetMapping("/logout")
+    public String logout(LoginForm form){
+        session.invalidate();
+        return "/";
+    }
 }
