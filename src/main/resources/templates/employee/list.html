@@ -96,9 +96,9 @@
               </tr>
             </thead>
             <tbody>
-              <tr th:each="employee, status : ${employeeList}">
+              <tr th:each="employee : ${employeeList}">
                 <td>
-                  <a href="detail.html" th:href="@{emploee/showDetail?id=} + status.index">
+                  <a href="detail.html" th:href="@{/employee/showDetail(id=${employee.id})}">
                     <span th:text="${employee.name}">山田太郎</span>
                   </a>
                 </td>
