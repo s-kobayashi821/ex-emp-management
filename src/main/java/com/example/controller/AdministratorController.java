@@ -94,6 +94,6 @@ public class AdministratorController {
     @GetMapping("/logout")
     public String logout(LoginForm form){
         session.invalidate();
-        return "/";
+        return toLogin(form);
     }
 }
